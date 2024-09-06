@@ -123,7 +123,7 @@ const GoldWeightPlateSVG = () => (
 
     {/* Weight Label Curved Along the Top */}
     <text
-      fontSize="24"
+      fontSize="16"
       textAnchor="middle"
       fill="#b8860b"
       fontFamily="Arial, sans-serif"
