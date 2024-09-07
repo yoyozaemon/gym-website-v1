@@ -5,6 +5,7 @@ import FilterModal from "./components/FilterModal/FilterModal";
 import FloatingDetailView from "./components/FloatingDetailView/FloatingDetailView";
 import WorkoutCard from "./components/WorkoutCard/WorkoutCard";
 import ToastNotification from "./components/ToastNotification/ToastNotification";
+import Pagination from "./components/Pagination/Pagination";
 
 const Workouts = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -15,6 +16,9 @@ const Workouts = () => {
   const [toastInfo, setToastInfo] = useState(null);
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [filtersChanged, setFiltersChanged] = useState(false);
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = window.innerWidth <= 768 ? 4 : 8;
 
   const filteredWorkouts = workoutsData.filter((workout) => {
     const matchesSearchTerm = workout.title
@@ -62,19 +66,15 @@ const Workouts = () => {
 
   useEffect(() => {
     if (searchPerformed) {
-      if (filteredWorkouts.length > 0) {
-        setToastInfo({
-          type: "success",
-          message: `Found ${filteredWorkouts.length} workout${
-            filteredWorkouts.length > 1 ? "s" : ""
-          } matching your search.`,
-        });
-      } else {
-        setToastInfo({
-          type: "error",
-          message: "No workouts found matching your search.",
-        });
-      }
+      setToastInfo({
+        type: filteredWorkouts.length > 0 ? "success" : "error",
+        message:
+          filteredWorkouts.length > 0
+            ? `Found ${filteredWorkouts.length} workout${
+                filteredWorkouts.length > 1 ? "s" : ""
+              } matching your search.`
+            : "No workouts found matching your search.",
+      });
       setSearchPerformed(false);
     }
   }, [searchPerformed, filteredWorkouts]);
@@ -118,6 +118,17 @@ const Workouts = () => {
     setSelectedWorkout(null);
   };
 
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
+  // Pagination logic
+  const pageCount = Math.ceil(filteredWorkouts.length / itemsPerPage);
+  const currentItems = filteredWorkouts.slice(
+    currentPage * itemsPerPage,
+    (currentPage + 1) * itemsPerPage
+  );
+
   return (
     <div className="container mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Workouts</h2>
@@ -140,8 +151,8 @@ const Workouts = () => {
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {filteredWorkouts.length > 0 ? (
-          filteredWorkouts.map((workout) => (
+        {currentItems.length > 0 ? (
+          currentItems.map((workout) => (
             <WorkoutCard
               key={workout.title}
               {...workout}
@@ -154,6 +165,8 @@ const Workouts = () => {
           </p>
         )}
       </div>
+
+      <Pagination pageCount={pageCount} onPageChange={handlePageChange} />
 
       <FloatingDetailView
         workout={selectedWorkout}
