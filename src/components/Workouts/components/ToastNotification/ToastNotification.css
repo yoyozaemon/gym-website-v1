@@ -1,0 +1,16 @@
+/* toastStyles.css */
+.Toastify__toast-container {
+  z-index: 9999;
+}
+
+.Toastify__toast--success {
+  background-color: #28a745; /* Green for success */
+}
+
+.Toastify__toast--error {
+  background-color: #dc3545; /* Red for error */
+}
+
+.Toastify__toast-body {
+  color: #ffffff; /* Light text color for dark mode */
+}
