@@ -8,6 +8,8 @@ import Workouts from "./components/Workouts/Workouts";
 import Diet from "./components/Diet/Diet";
 import BodyFatChecker from "./components/BodyFatChecker/BodyFatChecker";
 import Loading from "./components/Loading/Loading";
+import AboutUs from "./components/Home/components/AboutUs/AboutUs";
+import InfoSection from "./components/Home/components/InfoSection/InfoSection";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -33,9 +35,11 @@ const App = () => {
           <AnimatePresence mode="wait">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/about-us" element={<AboutUs />} />
               <Route path="/workouts" element={<Workouts />} />
               <Route path="/diet" element={<Diet />} />
               <Route path="/bodyfat" element={<BodyFatChecker />} />
+              <Route path="/info-section" element={<InfoSection />} />
             </Routes>
           </AnimatePresence>
         </div>

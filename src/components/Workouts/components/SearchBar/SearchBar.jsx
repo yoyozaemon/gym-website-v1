@@ -24,7 +24,6 @@ const SearchBar = ({
   };
 
   const handleBlur = () => {
-    // Delay hiding the suggestions to allow clicks on them
     setTimeout(() => setShowSuggestions(false), 100);
   };
 
