@@ -1,22 +1,4 @@
 // import React from "react";
-
-// // const Diet = () => (
-// //   <div className="container mx-auto p-4">
-// //     <h2 className="text-2xl font-bold mb-4">Diet Plans</h2>
-// //     <p className="mb-4">
-// //       Download our comprehensive diet chart for optimal nutrition.
-// //     </p>
-// //     <button
-// //       onClick={() =>
-// //         alert("Diet chart download functionality would be implemented here.")
-// //       }
-// //       className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-// //     >
-// //       Download Diet Chart
-// //     </button>
-// //   </div>
-// // );
-
 // // const Diet = () => {
 // //   return (
 // //     <p className="text-lg text-gray-500 text-center font-semibold">
@@ -37,28 +19,60 @@ const Diet = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 sm:p-6 md:p-8 lg:p-10">
-      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">
+    <div className="container mx-auto p-4 sm:p-6 md:p-8 lg:p-10 bg-gray-50 rounded-lg shadow-lg">
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
         Diet Plans
       </h2>
-      <p className="text-sm sm:text-base md:text-lg mb-4">
-        Select a diet plan to download 📄
+      <p className="text-base sm:text-lg text-gray-600 mb-6">
+        Select a diet plan to view details and download 📄
       </p>
-      <div className="flex flex-col sm:flex-row mb-4 gap-2">
+
+      <div className="flex flex-col sm:flex-row sm:justify-center gap-4 mb-6">
         <button
           onClick={() => handleSelection("weight_loss")}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-1"
+          className={`bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-transform transform ${
+            selectedPlan === "weight_loss" ? "scale-105" : ""
+          }`}
         >
           Weight Loss
         </button>
         <button
           onClick={() => handleSelection("weight_gain")}
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded flex-1"
+          className={`bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-transform transform ${
+            selectedPlan === "weight_gain" ? "scale-105" : ""
+          }`}
         >
           Weight Gain
         </button>
       </div>
-      {selectedPlan !== "none" && <PDFGenerator plan={selectedPlan} />}
+      {selectedPlan === "weight_loss" && (
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold text-gray-800 mb-4">
+            Weight Loss Plan
+          </h3>
+          <p className="text-base text-gray-600 mb-4">
+            Our weight loss plan is designed to help you shed those extra pounds
+            in a healthy and sustainable way. It includes a balanced diet,
+            exercise recommendations, and tips for staying motivated.
+          </p>
+          <PDFGenerator plan={selectedPlan} />
+        </div>
+      )}
+
+      {selectedPlan === "weight_gain" && (
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold text-gray-800 mb-4">
+            Weight Gain Plan
+          </h3>
+          <p className="text-base text-gray-600 mb-4">
+            Our weight gain plan is crafted to help you build muscle and
+            increase your weight in a healthy manner. It includes a nutritious
+            diet, exercise routines, and guidance to achieve your weight gain
+            goals effectively.
+          </p>
+          <PDFGenerator plan={selectedPlan} />
+        </div>
+      )}
     </div>
   );
 };
