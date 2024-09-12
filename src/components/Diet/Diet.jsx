@@ -40,7 +40,7 @@ const Diet = () => {
   return (
     <div className="container mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Diet Plans</h2>
-      <p className="mb-4">Select a diet plan to download in PDF format.</p>
+      <p className="mb-4">Select a diet plan to download 📄</p>
       <div className="mb-4">
         <button
           onClick={() => handleSelection("weight_loss")}
