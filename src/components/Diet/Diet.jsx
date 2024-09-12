@@ -26,7 +26,6 @@
 // // };
 // export default Diet;
 
-// Diet.js
 import React, { useState } from "react";
 import PDFGenerator from "./components/PDFGenerator";
 
@@ -38,19 +37,23 @@ const Diet = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Diet Plans</h2>
-      <p className="mb-4">Select a diet plan to download 📄</p>
-      <div className="mb-4">
+    <div className="container mx-auto p-4 sm:p-6 md:p-8 lg:p-10">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">
+        Diet Plans
+      </h2>
+      <p className="text-sm sm:text-base md:text-lg mb-4">
+        Select a diet plan to download 📄
+      </p>
+      <div className="flex flex-col sm:flex-row mb-4 gap-2">
         <button
           onClick={() => handleSelection("weight_loss")}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-1"
         >
           Weight Loss
         </button>
         <button
           onClick={() => handleSelection("weight_gain")}
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded flex-1"
         >
           Weight Gain
         </button>
