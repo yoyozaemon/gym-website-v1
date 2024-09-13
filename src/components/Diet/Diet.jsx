@@ -19,7 +19,7 @@ const Diet = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 sm:p-6 md:p-8 lg:p-10 rounded-lg bg-white dark:bg-gray-900">
+    <div className="container mx-auto p-4 sm:p-6 md:p-8 lg:p-10 dark:bg-gray-900">
       <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white mb-6">
         Diet Plans
       </h2>
