@@ -14,6 +14,12 @@ const QuickLinks = () => (
         Home
       </Link>
       <Link
+        to="/about-us"
+        className="text-gray-300 hover:text-white transition-colors duration-200 text-center md:text-left"
+      >
+        About Us
+      </Link>
+      <Link
         to="/workouts"
         className="text-gray-300 hover:text-white transition-colors duration-200 text-center md:text-left"
       >

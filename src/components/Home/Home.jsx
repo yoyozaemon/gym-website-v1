@@ -6,7 +6,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleGetStartedClick = () => {
-    navigate("/info-section"); // Navigate to the InfoSection route
+    navigate("/info-section");
   };
 
   return (
@@ -24,7 +24,7 @@ const Home = () => {
       >
         {/* Welcome Section */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-blue-600 dark:text-blue-400">
-          Welcome to FitnessPro Gym
+          Welcome to Yo Fitness Gym
         </h2>
         <p className="text-base sm:text-lg md:text-xl mb-4">
           Your one-stop destination for fitness and health. Explore our
