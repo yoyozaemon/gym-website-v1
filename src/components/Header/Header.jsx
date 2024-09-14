@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -7,7 +7,14 @@ import logo from "../../logo.svg";
 
 const Header = ({ toggleTheme, isDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleMenuToggle = () => setIsMenuOpen(!isMenuOpen);
 
@@ -21,7 +28,13 @@ const Header = ({ toggleTheme, isDarkMode }) => {
 
   return (
     <>
-      <header className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 shadow-sm fixed top-0 left-0 right-0 z-50 h-20">
+      <header
+        className={`bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 shadow-sm fixed top-0 left-0 right-0 z-50 h-20 transition-opacity duration-300 ${
+          scrollY > 50
+            ? "bg-opacity-70 dark:bg-opacity-70"
+            : "bg-opacity-100 dark:bg-opacity-100"
+        }`}
+      >
         <div className="container mx-auto px-6 flex items-center justify-between h-full">
           {/* Logo and Brand Name */}
           <div className="flex items-center">
