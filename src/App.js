@@ -10,13 +10,14 @@ import BodyFatChecker from "./components/BodyFatChecker/BodyFatChecker";
 import Loading from "./components/Loading/Loading";
 import AboutUs from "./components/Home/components/AboutUs/AboutUs";
 import InfoSection from "./components/Home/components/InfoSection/InfoSection";
+import Team from "./components/Team/Team";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   React.useEffect(() => {
-    setTimeout(() => setIsLoading(false), 2000); // 2 seconds loading time
+    setTimeout(() => setIsLoading(false), 1000);
   }, []);
 
   const toggleTheme = () => {
@@ -40,6 +41,7 @@ const App = () => {
               <Route path="/diet" element={<Diet />} />
               <Route path="/bodyfat" element={<BodyFatChecker />} />
               <Route path="/info-section" element={<InfoSection />} />
+              <Route path="/team" element={<Team />} />
             </Routes>
           </AnimatePresence>
         </div>

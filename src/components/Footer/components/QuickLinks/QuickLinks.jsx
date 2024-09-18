@@ -37,6 +37,12 @@ const QuickLinks = () => (
       >
         Body Fat Checker
       </Link>
+      <Link
+        to="/team"
+        className="text-gray-300 hover:text-white transition-colors duration-200 text-center md:text-left"
+      >
+        Team
+      </Link>
     </div>
   </div>
 );
