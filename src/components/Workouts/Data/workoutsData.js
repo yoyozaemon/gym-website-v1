@@ -6,8 +6,7 @@ export const workoutsData = [
     youtubeLink: "https://www.youtube.com/watch?v=d5e8C0wL4W0",
     categories: ["chest", "push"],
     difficulty: "intermediate",
-    image:
-      "https://img.freepik.com/free-vector/bench-press-demostration_1133-388.jpg?w=740&t=st=1726487448~exp=1726488048~hmac=5d0311407c31b88dcd92ce3641452c84ad8daade7d8788cc59e5bdf3677a6117",
+    image: "https://example.com/images/deadlift.jpg",
   },
   {
     title: "Deadlift",
