@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden">
       <video
-        className="absolute inset-0 w-full h-full object-contain"
+        className="absolute inset-0 w-full h-full object-cover" // Change object-contain to object-cover
         src={homeVideo}
         autoPlay
         muted
@@ -27,11 +27,9 @@ const Home = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.5 }}
-        className="flex items-center justify-start h-full relative z-10 pl-8 pr-8" // Added pr-8 for mobile view
+        className="flex items-center justify-start h-full relative z-10 pl-8 pr-8"
       >
         <div className="text-white mt-12 max-w-lg">
-          {" "}
-          {/* Added max-w-lg for better text alignment */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
