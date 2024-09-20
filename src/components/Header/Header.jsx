@@ -20,10 +20,11 @@ const Header = ({ toggleTheme, isDarkMode }) => {
 
   const navLinks = [
     { text: "Home", path: "/" },
+    { text: "About Us", path: "/about-us" },
+    { text: "Classes", path: "/classes" },
     { text: "Workouts", path: "/workouts" },
     { text: "Diet", path: "/diet" },
     { text: "Body Fat Checker", path: "/bodyfat" },
-    { text: "About Us", path: "/about-us" },
   ];
 
   return (

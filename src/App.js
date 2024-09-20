@@ -11,6 +11,7 @@ import Loading from "./components/Loading/Loading";
 import AboutUs from "./components/Home/components/AboutUs/AboutUs";
 import InfoSection from "./components/Home/components/InfoSection/InfoSection";
 import Team from "./components/Team/Team";
+import Classes from "./components/Sessions/Classes";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -42,6 +43,7 @@ const App = () => {
               <Route path="/bodyfat" element={<BodyFatChecker />} />
               <Route path="/info-section" element={<InfoSection />} />
               <Route path="/team" element={<Team />} />
+              <Route path="/classes" element={<Classes />} />
             </Routes>
           </AnimatePresence>
         </div>
