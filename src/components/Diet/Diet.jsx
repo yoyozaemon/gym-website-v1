@@ -1,13 +1,3 @@
-// import React from "react";
-// // const Diet = () => {
-// //   return (
-// //     <p className="text-lg text-gray-500 text-center font-semibold">
-// //       Coming Soon!
-// //     </p>
-// //   );
-// // };
-// export default Diet;
-
 import React, { useState } from "react";
 import PDFGenerator from "./components/PDFGenerator";
 
@@ -44,7 +34,24 @@ const Diet = () => {
         >
           Weight Gain
         </button>
+        <button
+          onClick={() => handleSelection("non_veg_weight_loss")}
+          className={`bg-yellow-900 hover:bg-yellow-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-transform transform ${
+            selectedPlan === "non_veg_weight_loss" ? "scale-105" : ""
+          } dark:bg-yellow-800 dark:hover:bg-yellow-700`}
+        >
+          Non-Veg Weight Loss
+        </button>
+        <button
+          onClick={() => handleSelection("non_veg_weight_gain")}
+          className={`bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-transform transform ${
+            selectedPlan === "non_veg_weight_gain" ? "scale-105" : ""
+          } dark:bg-purple-800 dark:hover:bg-purple-700`}
+        >
+          Non-Veg Weight Gain
+        </button>
       </div>
+
       {selectedPlan === "weight_loss" && (
         <div className="mb-6">
           <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
@@ -69,6 +76,32 @@ const Diet = () => {
             increase your weight in a healthy manner. It includes a nutritious
             diet, exercise routines, and guidance to achieve your weight gain
             goals effectively.
+          </p>
+          <PDFGenerator plan={selectedPlan} />
+        </div>
+      )}
+
+      {selectedPlan === "non_veg_weight_loss" && (
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+            Non-Vegetarian Weight Loss Plan
+          </h3>
+          <p className="text-base text-gray-600 dark:text-gray-300 mb-4">
+            Our non-vegetarian weight loss plan includes lean protein sources to
+            help you lose weight while staying satisfied.
+          </p>
+          <PDFGenerator plan={selectedPlan} />
+        </div>
+      )}
+
+      {selectedPlan === "non_veg_weight_gain" && (
+        <div className="mb-6">
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+            Non-Vegetarian Weight Gain Plan
+          </h3>
+          <p className="text-base text-gray-600 dark:text-gray-300 mb-4">
+            Our non-vegetarian weight gain plan is designed to provide the
+            necessary calories and protein for healthy weight gain.
           </p>
           <PDFGenerator plan={selectedPlan} />
         </div>

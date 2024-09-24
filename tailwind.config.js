@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  darkMode: "class", // Use 'media' for system-based dark mode
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -15,6 +15,7 @@ module.exports = {
           700: "#1E88E5",
           800: "#1976D2",
           900: "#1565C0",
+          950: "#0D47A1",
         },
         gray: {
           100: "#F5F5F5",
@@ -26,6 +27,7 @@ module.exports = {
           700: "#616161",
           800: "#424242",
           900: "#212121",
+          950: "#0D0D0D",
         },
         green: {
           100: "#E8F5E9",
@@ -37,6 +39,7 @@ module.exports = {
           700: "#43A047",
           800: "#388E3C",
           900: "#2C6B2F",
+          950: "#1B5E20",
         },
         red: {
           100: "#FFEBEE",
@@ -48,11 +51,49 @@ module.exports = {
           700: "#E53935",
           800: "#D32F2F",
           900: "#B71C1C",
+          950: "#C62828",
+        },
+        yellow: {
+          100: "#FFFDE7",
+          200: "#FFF9C4",
+          300: "#FFF59D",
+          400: "#FFF176",
+          500: "#FFEE58",
+          600: "#FFEB3B",
+          700: "#FDD835",
+          800: "#FBC02D",
+          900: "#F9A825",
+          950: "#F57F17",
+        },
+        purple: {
+          100: "#F3E5F5",
+          200: "#E1BEE7",
+          300: "#CE93D8",
+          400: "#BA68C8",
+          500: "#AB47BC",
+          600: "#9C27B0",
+          700: "#8E24AA",
+          800: "#7B1FA2",
+          900: "#6A1B9A",
+          950: "#4A148C",
+        },
+        orange: {
+          100: "#FFF3E0",
+          200: "#FFE0B2",
+          300: "#FFCC80",
+          400: "#FFB74D",
+          500: "#FFA726",
+          600: "#FF9800",
+          700: "#FB8C00",
+          800: "#F57C00",
+          900: "#EF6C00",
+          950: "#E65100",
         },
       },
       fontFamily: {
         sans: ['"Roboto"', "Arial", "sans-serif"],
         serif: ['"Merriweather"', "serif"],
+        mono: ['"Courier New"', "monospace"],
       },
     },
   },
