@@ -78,9 +78,9 @@ const FilterModal = ({
               className="border border-gray-300 dark:border-gray-700 rounded-lg p-2 w-full bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 text-base sm:text-lg appearance-none"
             >
               <option value="">All Difficulty Levels</option>
-              <option value="beginner">Beginner</option>
-              <option value="intermediate">Intermediate</option>
-              <option value="advanced">Advanced</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
               <svg

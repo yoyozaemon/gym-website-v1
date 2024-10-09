@@ -5,7 +5,7 @@ export const workoutsData = [
     reps: "8-12",
     youtubeLink: "https://www.youtube.com/watch?v=d5e8C0wL4W0",
     categories: ["chest", "push"],
-    difficulty: "intermediate",
+    difficulty: "Intermediate",
     image: "https://picsum.photos/200/300?random=1",
   },
   {
@@ -14,7 +14,7 @@ export const workoutsData = [
     reps: "5-8",
     youtubeLink: "https://www.youtube.com/watch?v=yt9sR7rxzY4",
     categories: ["back", "legs", "pull"],
-    difficulty: "advanced",
+    difficulty: "Advanced",
     image: "https://picsum.photos/200/300?random=2",
   },
   {
@@ -23,7 +23,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=bz4_Fx4fp3g",
     categories: ["biceps", "pull"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=3",
   },
   {
@@ -32,7 +32,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=5XoV9KCVZ3s",
     categories: ["biceps", "pull"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=4",
   },
   {
@@ -41,7 +41,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=1M4Dg10Q6KQ",
     categories: ["biceps", "pull"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=5",
   },
   {
@@ -50,7 +50,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=b1E2y8_MzZg",
     categories: ["shoulders", "push"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=6",
   },
   {
@@ -59,7 +59,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=3lN6UE4Y0rk",
     categories: ["shoulders", "push"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=7",
   },
   {
@@ -68,7 +68,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=kXoX3DFnbRI",
     categories: ["shoulders", "push"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=8",
   },
   {
@@ -77,7 +77,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=0pN0yWoqpXc",
     categories: ["back", "pull"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=9",
   },
   {
@@ -86,7 +86,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=8m4QzB0mM7Y",
     categories: ["back", "pull"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=10",
   },
   {
@@ -95,7 +95,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=6mNoH5wPfxU",
     categories: ["triceps", "push"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=11",
   },
   {
@@ -104,7 +104,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=7rwmFgUSg3g",
     categories: ["triceps", "push"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=12",
   },
   {
@@ -113,7 +113,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=J8F9l9o_o1U",
     categories: ["triceps", "push"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=13",
   },
   {
@@ -122,7 +122,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=39Aam1-EHfI",
     categories: ["legs"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=14",
   },
   {
@@ -131,7 +131,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=4H2oG4hmX6s",
     categories: ["legs"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=15",
   },
   {
@@ -140,7 +140,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=Y68LUvBqQZc",
     categories: ["abs"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=16",
   },
   {
@@ -149,7 +149,7 @@ export const workoutsData = [
     reps: "10-15",
     youtubeLink: "https://www.youtube.com/watch?v=dK_gnP8VVzI",
     categories: ["abs"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=17",
   },
   {
@@ -158,7 +158,7 @@ export const workoutsData = [
     reps: "15-20",
     youtubeLink: "https://www.youtube.com/watch?v=U-SyEZXzA-I",
     categories: ["cardio", "hiit"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=18",
   },
   {
@@ -167,7 +167,7 @@ export const workoutsData = [
     reps: "30-60 seconds",
     youtubeLink: "https://www.youtube.com/watch?v=6nV2m5huW5I",
     categories: ["abs"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=19",
   },
   {
@@ -176,7 +176,7 @@ export const workoutsData = [
     reps: "30-60 seconds",
     youtubeLink: "https://www.youtube.com/watch?v=G5oXGJ1ctvI",
     categories: ["cardio", "abs"],
-    difficulty: "beginner",
+    difficulty: "Beginner",
     image: "https://picsum.photos/200/300?random=20",
   },
   // Add more workouts here...
