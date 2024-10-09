@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { workoutsData } from "./Data/workoutsData";
 import SearchBar from "./components/SearchBar/SearchBar";
 import FilterModal from "./components/FilterModal/FilterModal";
 import FloatingDetailView from "./components/FloatingDetailView/FloatingDetailView";
 import WorkoutCard from "./components/WorkoutCard/WorkoutCard";
 import ToastNotification from "./components/ToastNotification/ToastNotification";
-import Pagination from "./components/Pagination/Pagination";
+import Pagination from "./components/Pagination/Pagination"; 
 
 const Workouts = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -15,12 +15,16 @@ const Workouts = () => {
   const [selectedWorkout, setSelectedWorkout] = useState(null);
   const [toastInfo, setToastInfo] = useState(null);
   const [searchPerformed, setSearchPerformed] = useState(false);
-  const [filtersChanged, setFiltersChanged] = useState(false);
-
+  
+  const [showMoreBeginner, setShowMoreBeginner] = useState(false);
+  const [showMoreIntermediate, setShowMoreIntermediate] = useState(false);
+  const [showMoreAdvanced, setShowMoreAdvanced] = useState(false);
+  
+  const [showPagination, setShowPagination] = useState(false); 
+  const [itemsPerPage, setItemsPerPage] = useState(4); 
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = window.innerWidth <= 768 ? 4 : 8;
 
-  const filteredWorkouts = workoutsData.filter((workout) => {
+  const workoutsDataFiltered = workoutsData.filter((workout) => {
     const matchesSearchTerm = workout.title
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
@@ -34,65 +38,15 @@ const Workouts = () => {
     return matchesSearchTerm && matchesCategory && matchesDifficulty;
   });
 
-  const workoutTitles = workoutsData.map((workout) => workout.title);
-  const suggestions = workoutTitles.filter((title) =>
-    title.toLowerCase().includes(searchTerm.toLowerCase())
+  const beginnerWorkouts = workoutsDataFiltered.filter(
+    (workout) => workout.difficulty === "Beginner"
   );
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const savedCategories = params.get("categories")
-      ? params.get("categories").split(",")
-      : [];
-    const savedDifficulty = params.get("difficulty") || "";
-    setSelectedCategories(savedCategories);
-    setSelectedDifficulty(savedDifficulty);
-  }, []);
-
-  useEffect(() => {
-    const params = new URLSearchParams();
-    if (selectedCategories.length > 0) {
-      params.set("categories", selectedCategories.join(","));
-    }
-    if (selectedDifficulty) {
-      params.set("difficulty", selectedDifficulty);
-    }
-    window.history.replaceState(
-      null,
-      "",
-      `${window.location.pathname}?${params.toString()}`
-    );
-  }, [selectedCategories, selectedDifficulty]);
-
-  useEffect(() => {
-    if (searchPerformed) {
-      setToastInfo({
-        type: filteredWorkouts.length > 0 ? "success" : "error",
-        message:
-          filteredWorkouts.length > 0
-            ? `Found ${filteredWorkouts.length} workout${
-                filteredWorkouts.length > 1 ? "s" : ""
-              } matching your search.`
-            : "No workouts found matching your search.",
-      });
-      setSearchPerformed(false);
-    }
-  }, [searchPerformed, filteredWorkouts]);
-
-  useEffect(() => {
-    if (filtersChanged) {
-      setToastInfo({
-        type: filteredWorkouts.length > 0 ? "success" : "error",
-        message:
-          filteredWorkouts.length > 0
-            ? `Found ${filteredWorkouts.length} workout${
-                filteredWorkouts.length > 1 ? "s" : ""
-              } matching your filters.`
-            : "No workouts found matching your filters.",
-      });
-      setFiltersChanged(false); // Reset after showing toast
-    }
-  }, [filtersChanged, filteredWorkouts]);
+  const intermediateWorkouts = workoutsDataFiltered.filter(
+    (workout) => workout.difficulty === "Intermediate"
+  );
+  const advancedWorkouts = workoutsDataFiltered.filter(
+    (workout) => workout.difficulty === "Advanced"
+  );
 
   const handleCategoryChange = (e) => {
     const value = e.target.value;
@@ -101,7 +55,6 @@ const Workouts = () => {
         ? prev.filter((category) => category !== value)
         : [...prev, value]
     );
-    setFiltersChanged(true);
   };
 
   const handleSearch = (e) => {
@@ -122,12 +75,40 @@ const Workouts = () => {
     setCurrentPage(selected);
   };
 
-  // Pagination logic
-  const pageCount = Math.ceil(filteredWorkouts.length / itemsPerPage);
-  const currentItems = filteredWorkouts.slice(
-    currentPage * itemsPerPage,
-    (currentPage + 1) * itemsPerPage
-  );
+  const handleShowMore = (difficulty) => {
+    if (difficulty === "Beginner") {
+      setShowMoreBeginner((prev) => !prev);
+      setShowMoreIntermediate(false); 
+      setShowMoreAdvanced(false); 
+    } else if (difficulty === "Intermediate") {
+      setShowMoreIntermediate((prev) => !prev);
+      setShowMoreBeginner(false); 
+      setShowMoreAdvanced(false); 
+    } else if (difficulty === "Advanced") {
+      setShowMoreAdvanced((prev) => !prev);
+      setShowMoreBeginner(false); 
+      setShowMoreIntermediate(false); 
+    }
+
+ 
+    setShowPagination(true);
+    setItemsPerPage(8); 
+    setCurrentPage(0); 
+  };
+
+  const handleShowLess = (difficulty) => {
+    if (difficulty === "Beginner") {
+      setShowMoreBeginner(false);
+    } else if (difficulty === "Intermediate") {
+      setShowMoreIntermediate(false);
+    } else if (difficulty === "Advanced") {
+      setShowMoreAdvanced(false);
+    }
+
+    setCurrentPage(0);
+    setItemsPerPage(4); 
+    setShowPagination(false); 
+  };
 
   return (
     <div className="container mx-auto p-4">
@@ -138,7 +119,6 @@ const Workouts = () => {
         setSearchTerm={setSearchTerm}
         openFilterModal={() => setIsFilterModalOpen(true)}
         onKeyDown={handleSearch}
-        suggestions={suggestions}
       />
 
       <FilterModal
@@ -150,31 +130,121 @@ const Workouts = () => {
         setSelectedDifficulty={setSelectedDifficulty}
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {currentItems.length > 0 ? (
-          currentItems.map((workout) => (
-            <WorkoutCard
-              key={workout.title}
-              {...workout}
-              onClick={() => handleWorkoutClick(workout)}
-            />
-          ))
-        ) : (
-          <p className="col-span-full text-center text-gray-500">
-            No workouts found
-          </p>
-        )}
-      </div>
+      {(showMoreBeginner || (!showMoreIntermediate && !showMoreAdvanced)) && (
+        <>
+          <h3 className="text-xl font-semibold mt-6 mb-4">Beginner Workouts</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {beginnerWorkouts
+              .slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
+              .map((workout) => (
+                <WorkoutCard
+                  key={workout.title}
+                  {...workout}
+                  onClick={() => handleWorkoutClick(workout)}
+                />
+              ))}
+          </div>
+          {beginnerWorkouts.length > itemsPerPage && (
+            <button
+              className="text-blue-500 hover:text-blue-700 mt-4"
+              onClick={() => {
+                if (showMoreBeginner) {
+                  handleShowLess("Beginner");
+                } else {
+                  handleShowMore("Beginner");
+                }
+              }}
+            >
+              {showMoreBeginner ? "Show Less" : "Show More"}
+            </button>
+          )}
+        </>
+      )}
 
-      <Pagination pageCount={pageCount} onPageChange={handlePageChange} />
+      {(showMoreIntermediate || (!showMoreBeginner && !showMoreAdvanced)) && (
+        <>
+          <h3 className="text-xl font-semibold mt-6 mb-4">Intermediate Workouts</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {intermediateWorkouts
+              .slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
+              .map((workout) => (
+                <WorkoutCard
+                  key={workout.title}
+                  {...workout}
+                  onClick={() => handleWorkoutClick(workout)}
+                />
+              ))}
+          </div>
+          {intermediateWorkouts.length > itemsPerPage && (
+            <button
+              className="text-blue-500 hover:text-blue-700 mt-4"
+              onClick={() => {
+                if (showMoreIntermediate) {
+                  handleShowLess("Intermediate");
+                } else {
+                  handleShowMore("Intermediate");
+                }
+              }}
+            >
+              {showMoreIntermediate ? "Show Less" : "Show More"}
+            </button>
+          )}
+        </>
+      )}
+
+      {(showMoreAdvanced || (!showMoreBeginner && !showMoreIntermediate)) && (
+        <>
+          <h3 className="text-xl font-semibold mt-6 mb-4">Advanced Workouts</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {advancedWorkouts
+              .slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
+              .map((workout) => (
+                <WorkoutCard
+                  key={workout.title}
+                  {...workout}
+                  onClick={() => handleWorkoutClick(workout)}
+                />
+              ))}
+          </div>
+          {advancedWorkouts.length > itemsPerPage && (
+            <button
+              className="text-blue-500 hover:text-blue-700 mt-4"
+              onClick={() => {
+                if (showMoreAdvanced) {
+                  handleShowLess("Advanced");
+                } else {
+                  handleShowMore("Advanced");
+                }
+              }}
+            >
+              {showMoreAdvanced ? "Show Less" : "Show More"}
+            </button>
+          )}
+        </>
+      )}
+
+      {showPagination && (
+        <Pagination
+          pageCount={
+            Math.ceil(
+              (beginnerWorkouts.length + intermediateWorkouts.length + advancedWorkouts.length) / itemsPerPage
+            ) 
+          }
+          onPageChange={handlePageChange}
+        />
+      )}
 
       <FloatingDetailView
+        isOpen={!!selectedWorkout}
         workout={selectedWorkout}
         onClose={handleCloseDetail}
       />
-
       {toastInfo && (
-        <ToastNotification type={toastInfo.type} message={toastInfo.message} />
+        <ToastNotification
+          message={toastInfo.message}
+          type={toastInfo.type}
+          onClose={() => setToastInfo(null)}
+        />
       )}
     </div>
   );
